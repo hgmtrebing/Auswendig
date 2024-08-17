@@ -1,4 +1,4 @@
-package us.hgmtrebing.auswendigserver;
+package us.hgmtrebing.auswendigserver.database.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

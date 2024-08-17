@@ -1,4 +1,4 @@
-package us.hgmtrebing.auswendigserver;
+package us.hgmtrebing.auswendigserver.database.dev;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,6 +7,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import us.hgmtrebing.auswendigserver.database.entity.DeckEntity;
+import us.hgmtrebing.auswendigserver.database.entity.DeckSideEntity;
+import us.hgmtrebing.auswendigserver.database.entity.UserEntity;
+import us.hgmtrebing.auswendigserver.database.repository.DeckRepository;
+import us.hgmtrebing.auswendigserver.database.repository.DeckSideRepository;
+import us.hgmtrebing.auswendigserver.database.repository.UserRepository;
 
 import java.util.List;
 

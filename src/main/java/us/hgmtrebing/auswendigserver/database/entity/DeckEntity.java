@@ -1,4 +1,4 @@
-package us.hgmtrebing.auswendigserver;
+package us.hgmtrebing.auswendigserver.database.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -32,7 +32,6 @@ public class DeckEntity {
     private String deckName;
 
     @OneToMany(mappedBy = "id")
-    // @JoinColumn(name = "deck_side_id")
     private List<DeckSideEntity> deckSides;
 
     @CreationTimestamp
