@@ -1,4 +1,4 @@
-package us.hgmtrebing.auswendigserver.rest;
+package us.hgmtrebing.auswendigserver.rest.configuration;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
@@ -20,6 +20,7 @@ public class SwaggerConfiguration {
                                 .email("hgmtrebing@outlook.com")
                                 .name("Harry Trebing")
                         )
-                );
+                )
+                ;
     }
 }
