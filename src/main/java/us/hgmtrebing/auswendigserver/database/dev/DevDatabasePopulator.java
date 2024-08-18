@@ -42,12 +42,12 @@ public class DevDatabasePopulator implements CommandLineRunner {
         addUser("Evangeline", "Trebing", "eltrebing");
         addUser("James", "Crawford", "jgcrawford");
 
-        List<UserEntity> harry = userRepository.findByUsername("hgmtrebing");
-        List<UserEntity> anjanette = userRepository.findByUsername("aktrebing");
+        UserEntity harry = userRepository.findByUsername("hgmtrebing");
+        UserEntity anjanette = userRepository.findByUsername("aktrebing");
 
-        addDeck("German Example Sentences", harry.get(0), List.of("German", "English"));
-        addDeck("Spanish Example Sentences", harry.get(0), List.of("Spanish", "English", "Notes"));
-        addDeck("Japanese Cooking Vocabulary", anjanette.get(0), List.of("Japanese", "English", "Photo", "Audio", "Notes"));
+        addDeck("German Example Sentences", harry, List.of("German", "English"));
+        addDeck("Spanish Example Sentences", harry, List.of("Spanish", "English", "Notes"));
+        addDeck("Japanese Cooking Vocabulary", anjanette, List.of("Japanese", "English", "Photo", "Audio", "Notes"));
     }
 
     private void addUser(String firstName, String lastName, String userName) {

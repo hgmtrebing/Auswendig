@@ -9,5 +9,5 @@ import java.util.List;
 @Service
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
-    public abstract List<UserEntity> findByUsername(String username);
+    public abstract UserEntity findByUsername(String username);
 }

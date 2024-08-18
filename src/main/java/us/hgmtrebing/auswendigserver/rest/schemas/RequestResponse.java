@@ -33,7 +33,11 @@ public class RequestResponse<T> {
 
     public RequestResponse<T> addOperationResponse(OperationResponse response) {
         this.operationResponses.add(response);
-        this.rollupStatus = OperationStatus.merge(this.rollupStatus, response.getStatus());
+        if (this.operationResponses.size() > 1) {
+            this.rollupStatus = OperationStatus.merge(this.rollupStatus, response.getStatus());
+        } else {
+            this.rollupStatus = response.getStatus();
+        }
 
         return this;
     }
