@@ -10,4 +10,5 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
     public abstract UserEntity findByUsername(String username);
+    public abstract void deleteByUsername(String username);
 }

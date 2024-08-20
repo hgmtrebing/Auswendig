@@ -2,12 +2,11 @@ package us.hgmtrebing.auswendigserver.rest.controllers;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import us.hgmtrebing.auswendigserver.database.entity.UserEntity;
 import us.hgmtrebing.auswendigserver.database.repository.UserRepository;
 import us.hgmtrebing.auswendigserver.rest.mapping.UserMapper;
 import us.hgmtrebing.auswendigserver.rest.schemas.OperationStatus;
@@ -71,6 +70,24 @@ public class UserController {
         } catch (Exception e) {
             return errorProcessor.createErrorResponse("Failed to create new user.", e);
         }
+    }
 
+    @PutMapping("update-user")
+    @Operation(summary = "Modify an existing user.", description = "Modifies an existing user in the system.")
+    public OperationResponse<UserSchema> updateUser(@RequestParam String username, @RequestBody UserSchema newSchema) {
+        log.info("Received request to modify user '{}' to '{}'", username, newSchema);
+
+        try {
+            var entity = userRepository.findByUsername(username);
+            if (entity == null) {
+                errorProcessor.createErrorResponse("Could not find user in database: " + username);
+            }
+
+            var newEntity = userRepository.saveAndFlush(userMapper.update(entity, newSchema));
+            return OperationResponse.passedCompletely(userMapper.convert(newEntity));
+
+        } catch (Exception e) {
+            return errorProcessor.createErrorResponse("Failed to update user.", e);
+        }
     }
 }

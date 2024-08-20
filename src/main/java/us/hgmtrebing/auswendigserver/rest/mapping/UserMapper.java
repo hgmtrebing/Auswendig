@@ -31,15 +31,27 @@ public class UserMapper {
     }
 
     public UserEntity convert (UserSchema schema) {
-        if (schema == null) {
-            return null;
+        return update(new UserEntity(), schema);
+    }
+
+    public UserEntity update(UserEntity entity, UserSchema schema) {
+        if (entity == null || schema == null) {
+            return entity;
         }
 
-        return UserEntity.builder()
-                .username(schema.getUsername())
-                .lastName(schema.getLastName())
-                .firstName(schema.getFirstName())
-                .build();
+        if (schema.getUsername() != null) {
+            entity.setUsername(schema.getUsername());
+        }
+
+        if (schema.getFirstName() != null) {
+            entity.setFirstName(schema.getFirstName());
+        }
+
+        if (schema.getLastName() != null) {
+            entity.setLastName(schema.getLastName());
+        }
+
+        return entity;
     }
 
 }
