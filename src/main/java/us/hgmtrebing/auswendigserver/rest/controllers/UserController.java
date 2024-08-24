@@ -5,9 +5,11 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import us.hgmtrebing.auswendigserver.database.entity.UserEntity;
 import us.hgmtrebing.auswendigserver.database.repository.UserRepository;
+import us.hgmtrebing.auswendigserver.rest.exception.FailedToFindUserException;
 import us.hgmtrebing.auswendigserver.rest.mapping.UserMapper;
 import us.hgmtrebing.auswendigserver.rest.schemas.OperationStatus;
 import us.hgmtrebing.auswendigserver.rest.schemas.OperationResponse;
@@ -29,65 +31,49 @@ public class UserController {
 
     @GetMapping("get-all-users")
     @Operation(summary = "Get All Users.", description = "Get All Users in the System.")
-    public OperationResponse<List<UserSchema>> getAllUsers() {
-        log.info("Received request to retrieve all users.");
+    public ResponseEntity<OperationResponse<List<UserSchema>>> getAllUsers() {
 
-        try {
-            return OperationResponse.passedCompletely(userMapper.convert(userRepository.findAll()));
-        } catch (Exception e) {
-            return errorProcessor.createErrorResponse("Failed to retrieve users from the Database.", e);
-        }
+        log.info("Received request to retrieve all users.");
+        return ResponseEntity.ok(
+                OperationResponse.passedCompletely(
+                        userMapper.convert(userRepository.findAll())
+                ));
     }
 
     @GetMapping("get-user-by-username")
     @Operation(summary = "Get User by Username.", description = "Get Individual User by Username.")
-    public OperationResponse<UserSchema> getUserByUsername(String username) {
+    public ResponseEntity<OperationResponse<UserSchema>> getUserByUsername(String username) {
         log.info("Received request to get user: {}", username);
 
-        try {
-            var data = userMapper.convert(userRepository.findByUsername(username));
-            if (data == null) {
-                return errorProcessor.createErrorResponse("Failed to find user: " + username);
-            }
-
-            return OperationResponse.passedCompletely(data);
-
-        } catch (Exception e) {
-            return errorProcessor.createErrorResponse("Failed to retrieve user from the Database.", e);
+        var data = userMapper.convert(userRepository.findByUsername(username));
+        if (data == null) {
+            throw new FailedToFindUserException(username);
         }
+
+        return ResponseEntity.ok(OperationResponse.passedCompletely(data));
+
     }
 
     @PostMapping("add-new-user")
     @Operation(summary = "Create new user.", description = "Creates a new user in the system.")
     public OperationResponse<UserSchema> createUser(UserSchema schema) {
         log.info("Received request to create new user: {}", schema.toString());
-
-        try {
-            return OperationResponse.passedCompletely(userMapper.convert(
-                    userRepository.saveAndFlush(userMapper.convert(schema))
-            ));
-
-        } catch (Exception e) {
-            return errorProcessor.createErrorResponse("Failed to create new user.", e);
-        }
+        return OperationResponse.passedCompletely(userMapper.convert(
+                userRepository.saveAndFlush(userMapper.convert(schema))
+        ));
     }
 
     @PutMapping("update-user")
     @Operation(summary = "Modify an existing user.", description = "Modifies an existing user in the system.")
     public OperationResponse<UserSchema> updateUser(@RequestParam String username, @RequestBody UserSchema newSchema) {
+
         log.info("Received request to modify user '{}' to '{}'", username, newSchema);
-
-        try {
-            var entity = userRepository.findByUsername(username);
-            if (entity == null) {
-                errorProcessor.createErrorResponse("Could not find user in database: " + username);
-            }
-
-            var newEntity = userRepository.saveAndFlush(userMapper.update(entity, newSchema));
-            return OperationResponse.passedCompletely(userMapper.convert(newEntity));
-
-        } catch (Exception e) {
-            return errorProcessor.createErrorResponse("Failed to update user.", e);
+        var entity = userRepository.findByUsername(username);
+        if (entity == null) {
+            throw new FailedToFindUserException(username);
         }
+
+        var newEntity = userRepository.saveAndFlush(userMapper.update(entity, newSchema));
+        return OperationResponse.passedCompletely(userMapper.convert(newEntity));
     }
 }

@@ -13,13 +13,13 @@ import lombok.NoArgsConstructor;
 @Schema(description = "Schema to encapsulate user data.")
 public class UserSchema {
 
-    @Schema(description = "The user's unique username.")
+    @Schema(description = "The user's unique username.", example = "orabbit")
     private String username;
 
-    @Schema(description = "The user's first name.")
+    @Schema(description = "The user's first name.", example = "Oswald")
     private String firstName;
 
-    @Schema(description = "The user's last name.")
+    @Schema(description = "The user's last name.", example = "Lucky Rabbit")
     private String lastName;
 
 }
