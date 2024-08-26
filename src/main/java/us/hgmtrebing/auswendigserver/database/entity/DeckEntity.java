@@ -12,7 +12,7 @@ import java.time.ZonedDateTime;
 import java.util.List;
 
 @Entity
-@Table(name = "decks")
+@Table(name = "tbl_deck")
 @Data
 @Builder
 @AllArgsConstructor
@@ -21,24 +21,27 @@ public class DeckEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "deck_id")
+    @Column(name = "pk_id")
     private long deckId;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "fk_owner_user_id", nullable = false)
     private UserEntity owner;
 
-    @Column(name = "deck_name", nullable = false)
-    private String deckName;
+    @Column(name = "name", nullable = false)
+    private String name;
+
+    @Column(name = "description", nullable = true)
+    private String description;
 
     @OneToMany(mappedBy = "id")
-    private List<DeckSideEntity> deckSides;
+    private List<CardSideTemplateEntity> cardTemplate;
 
     @CreationTimestamp
-    @Column(name = "deck_create_timestamp", nullable = false, updatable = false)
+    @Column(name = "create_ts", nullable = false, updatable = false)
     private ZonedDateTime createTimestamp;
 
     @UpdateTimestamp
-    @Column(name = "deck_last_mod_timestamp", nullable = false, updatable = false)
+    @Column(name = "last_mod_ts", nullable = false, updatable = false)
     private ZonedDateTime lastModifiedTimestamp;
 }

@@ -17,23 +17,23 @@ public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "user_id")
+    @Column(name = "pk_id")
     private long databaseId;
 
     @Column(name = "username", unique = true, nullable = false)
     private String username;
 
-    @Column(name = "user_last_name", nullable = false)
+    @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(name = "user_first_name", nullable = false)
+    @Column(name = "first_name", nullable = false)
     private String firstName;
 
     @CreationTimestamp
-    @Column(name = "user_create_timestamp", nullable = false, updatable = false)
+    @Column(name = "create_ts", nullable = false, updatable = false)
     private ZonedDateTime createTimestamp;
 
     @UpdateTimestamp
-    @Column(name = "user_last_mod_timestamp", nullable = false, updatable = false)
+    @Column(name = "last_mod_ts", nullable = false, updatable = false)
     private ZonedDateTime lastModifiedTimestamp;
 }

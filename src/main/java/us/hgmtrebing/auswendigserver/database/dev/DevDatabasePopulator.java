@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import us.hgmtrebing.auswendigserver.database.entity.DeckEntity;
-import us.hgmtrebing.auswendigserver.database.entity.DeckSideEntity;
+import us.hgmtrebing.auswendigserver.database.entity.CardSideTemplateEntity;
 import us.hgmtrebing.auswendigserver.database.entity.UserEntity;
 import us.hgmtrebing.auswendigserver.database.repository.DeckRepository;
 import us.hgmtrebing.auswendigserver.database.repository.DeckSideRepository;
@@ -61,13 +61,13 @@ public class DevDatabasePopulator implements CommandLineRunner {
 
     private void addDeck(String deckName, UserEntity owner, List<String> sides) {
         DeckEntity deck = deckRepository.saveAndFlush(DeckEntity.builder()
-                .deckName(deckName)
+                .name(deckName)
                 .owner(owner)
                 .build()
         );
 
         for (String side : sides) {
-            deckSideRepository.saveAndFlush(DeckSideEntity.builder()
+            deckSideRepository.saveAndFlush(CardSideTemplateEntity.builder()
                     .name(side)
                     .deck(deck)
                     .build()

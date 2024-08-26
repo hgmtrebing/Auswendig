@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table(name = "cards")
+@Table(name = "tbl_cards")
 @Data
 public class CardEntity {
 
@@ -12,4 +12,7 @@ public class CardEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long cardId;
 
+    @ManyToOne
+    @JoinColumn(name = "fk_deck_id")
+    private DeckEntity deck;
 }

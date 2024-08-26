@@ -7,22 +7,25 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "deck_sides")
+@Table(name = "tbl_card_side_template")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class DeckSideEntity {
+public class CardSideTemplateEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "deck_side_id")
+    @Column(name = "pk_id")
     private long id;
 
     @ManyToOne
-    @JoinColumn(name = "deck_id", nullable = false)
+    @JoinColumn(name = "fk_deck_id", nullable = false)
     private DeckEntity deck;
 
-    @Column(name = "deck_side_name")
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "type")
+    private SideType sideType;
 }
