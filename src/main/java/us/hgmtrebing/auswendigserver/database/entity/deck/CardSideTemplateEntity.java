@@ -1,10 +1,11 @@
-package us.hgmtrebing.auswendigserver.database.entity;
+package us.hgmtrebing.auswendigserver.database.entity.deck;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import us.hgmtrebing.auswendigserver.database.entity.SideType;
 
 @Entity
 @Table(name = "tbl_card_side_template")

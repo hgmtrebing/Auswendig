@@ -1,7 +1,8 @@
-package us.hgmtrebing.auswendigserver.database.entity;
+package us.hgmtrebing.auswendigserver.database.entity.quiz;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import us.hgmtrebing.auswendigserver.database.entity.deck.CardEntity;
 
 import java.time.LocalDateTime;
 

@@ -1,4 +1,4 @@
-package us.hgmtrebing.auswendigserver.database.entity;
+package us.hgmtrebing.auswendigserver.database.entity.deck;
 
 import jakarta.persistence.*;
 import lombok.Data;

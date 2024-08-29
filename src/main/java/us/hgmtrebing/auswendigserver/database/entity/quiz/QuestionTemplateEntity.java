@@ -1,7 +1,9 @@
-package us.hgmtrebing.auswendigserver.database.entity;
+package us.hgmtrebing.auswendigserver.database.entity.quiz;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import us.hgmtrebing.auswendigserver.database.entity.deck.CardSideTemplateEntity;
+import us.hgmtrebing.auswendigserver.database.entity.deck.DeckEntity;
 
 @Data
 @Table(name = "tbl_question_templates")

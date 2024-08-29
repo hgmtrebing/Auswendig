@@ -1,4 +1,4 @@
-package us.hgmtrebing.auswendigserver.database.entity;
+package us.hgmtrebing.auswendigserver.database.entity.quiz;
 
 public enum QuestionTypeEntity {
     MULTIPLE_CHOICE,
