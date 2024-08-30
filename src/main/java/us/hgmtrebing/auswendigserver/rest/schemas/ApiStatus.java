@@ -3,13 +3,13 @@ package us.hgmtrebing.auswendigserver.rest.schemas;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 @Schema (description = "The status of API Operations.")
-public enum OperationStatus {
+public enum ApiStatus {
     PASSED_COMPLETELY,
     PASSED_WITH_ERRORS,
     FAILED_COMPLETELY,
     UNKNOWN;
 
-    public static OperationStatus merge(OperationStatus o1, OperationStatus o2) {
+    public static ApiStatus merge(ApiStatus o1, ApiStatus o2) {
 
         if (o1 == PASSED_COMPLETELY && o2 == PASSED_COMPLETELY) {
             return PASSED_COMPLETELY;
