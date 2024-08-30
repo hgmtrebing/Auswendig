@@ -7,10 +7,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import us.hgmtrebing.auswendigserver.database.entity.deck.DeckEntity;
+import us.hgmtrebing.auswendigserver.database.entity.deck.CardlessDeckEntity;
 import us.hgmtrebing.auswendigserver.database.entity.deck.CardSideTemplateEntity;
 import us.hgmtrebing.auswendigserver.database.entity.UserEntity;
-import us.hgmtrebing.auswendigserver.database.repository.DeckRepository;
+import us.hgmtrebing.auswendigserver.database.repository.CardlessDeckRepository;
 import us.hgmtrebing.auswendigserver.database.repository.DeckSideRepository;
 import us.hgmtrebing.auswendigserver.database.repository.UserRepository;
 
@@ -27,7 +27,7 @@ public class DevDatabasePopulator implements CommandLineRunner {
     private UserRepository userRepository;
 
     @Autowired
-    private DeckRepository deckRepository;
+    private CardlessDeckRepository cardlessDeckRepository;
 
     @Autowired
     private DeckSideRepository deckSideRepository;
@@ -60,7 +60,7 @@ public class DevDatabasePopulator implements CommandLineRunner {
     }
 
     private void addDeck(String deckName, UserEntity owner, List<String> sides) {
-        DeckEntity deck = deckRepository.saveAndFlush(DeckEntity.builder()
+        CardlessDeckEntity deck = cardlessDeckRepository.saveAndFlush(CardlessDeckEntity.builder()
                 .name(deckName)
                 .owner(owner)
                 .build()

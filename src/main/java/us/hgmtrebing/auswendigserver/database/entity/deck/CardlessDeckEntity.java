@@ -13,12 +13,15 @@ import java.time.ZonedDateTime;
 import java.util.List;
 
 @Entity
-@Table(name = "tbl_deck")
+@Table(
+        name = "tbl_deck",
+        uniqueConstraints = {@UniqueConstraint(columnNames = {"name", "fk_owner_user_id"})}
+)
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class DeckEntity {
+public class CardlessDeckEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

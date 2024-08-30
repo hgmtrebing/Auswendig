@@ -3,7 +3,7 @@ package us.hgmtrebing.auswendigserver.database.entity.quiz;
 import jakarta.persistence.*;
 import lombok.Data;
 import us.hgmtrebing.auswendigserver.database.entity.deck.CardSideTemplateEntity;
-import us.hgmtrebing.auswendigserver.database.entity.deck.DeckEntity;
+import us.hgmtrebing.auswendigserver.database.entity.deck.CardlessDeckEntity;
 
 @Data
 @Table(name = "tbl_question_templates")
@@ -28,5 +28,5 @@ public class QuestionTemplateEntity {
 
     @ManyToOne
     @JoinColumn(name = "fk_deck_id")
-    private DeckEntity deck;
+    private CardlessDeckEntity deck;
 }

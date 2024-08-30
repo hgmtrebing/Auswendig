@@ -22,7 +22,7 @@ public class CardSideTemplateEntity {
 
     @ManyToOne
     @JoinColumn(name = "fk_deck_id", nullable = false)
-    private DeckEntity deck;
+    private CardlessDeckEntity deck;
 
     @Column(name = "name")
     private String name;

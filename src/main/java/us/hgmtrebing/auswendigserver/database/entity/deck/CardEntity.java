@@ -14,5 +14,5 @@ public class CardEntity {
 
     @ManyToOne
     @JoinColumn(name = "fk_deck_id")
-    private DeckEntity deck;
+    private CardlessDeckEntity deck;
 }

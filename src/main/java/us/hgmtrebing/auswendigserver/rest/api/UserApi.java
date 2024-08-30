@@ -2,15 +2,13 @@ package us.hgmtrebing.auswendigserver.rest.api;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import us.hgmtrebing.auswendigserver.rest.schemas.ApiResponse;
 import us.hgmtrebing.auswendigserver.rest.schemas.HttpApiResponse;
 import us.hgmtrebing.auswendigserver.rest.schemas.UserSchema;
 
 import java.util.List;
 
-@RequestMapping("/api/v1/users")
+@RequestMapping("/api/v1/user")
 @Tag(name = "User Controller", description = "RESTful API for Auswendig Users.")
 public interface UserApi {
 

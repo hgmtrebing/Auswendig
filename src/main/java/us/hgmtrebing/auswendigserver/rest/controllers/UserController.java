@@ -2,13 +2,11 @@ package us.hgmtrebing.auswendigserver.rest.controllers;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import us.hgmtrebing.auswendigserver.database.repository.UserRepository;
 import us.hgmtrebing.auswendigserver.rest.api.UserApi;
 import us.hgmtrebing.auswendigserver.rest.exception.FailedToFindUserException;
 import us.hgmtrebing.auswendigserver.rest.mapping.UserMapper;
-import us.hgmtrebing.auswendigserver.rest.schemas.ApiResponse;
 import us.hgmtrebing.auswendigserver.rest.schemas.HttpApiResponse;
 import us.hgmtrebing.auswendigserver.rest.schemas.UserSchema;
 import us.hgmtrebing.auswendigserver.rest.util.ErrorProcessor;
