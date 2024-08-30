@@ -3,6 +3,8 @@ package us.hgmtrebing.auswendigserver.rest.api;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import us.hgmtrebing.auswendigserver.rest.schemas.CardlessDeckSchema;
 import us.hgmtrebing.auswendigserver.rest.schemas.HttpApiResponse;
@@ -17,4 +19,8 @@ public interface DeckApi {
     @GetMapping("get-all-cardless-decks")
     @Operation(summary = "Get All Cardless Decks.", description = "Get All Cardless Decks in the System.")
     public abstract HttpApiResponse<List<CardlessDeckSchema>> getAllDecksCardless();
+
+    @PutMapping("add-cardless-deck")
+    @Operation(summary = "Add a Cardless Deck.", description = "Add a new Cardless Deck to the System.")
+    public abstract HttpApiResponse<CardlessDeckSchema> addCardlessDeck(@RequestBody CardlessDeckSchema schema);
 }
