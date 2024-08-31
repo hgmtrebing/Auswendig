@@ -4,21 +4,18 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import us.hgmtrebing.auswendigserver.database.ExternalIdInjector;
 
 import java.time.ZonedDateTime;
 
 @Entity
-@Table(name = "users")
+@Table(name = "tbl_users")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UserEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "pk_id")
-    private long databaseId;
+@EntityListeners(ExternalIdInjector.class)
+public class UserEntity extends AuswendigEntity {
 
     @Column(name = "username", unique = true, nullable = false)
     private String username;
@@ -28,12 +25,4 @@ public class UserEntity {
 
     @Column(name = "first_name", nullable = false)
     private String firstName;
-
-    @CreationTimestamp
-    @Column(name = "create_ts", nullable = false, updatable = false)
-    private ZonedDateTime createTimestamp;
-
-    @UpdateTimestamp
-    @Column(name = "last_mod_ts", nullable = false, updatable = false)
-    private ZonedDateTime lastModifiedTimestamp;
 }

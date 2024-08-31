@@ -2,16 +2,14 @@ package us.hgmtrebing.auswendigserver.database.entity.deck;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import us.hgmtrebing.auswendigserver.database.ExternalIdInjector;
+import us.hgmtrebing.auswendigserver.database.entity.AuswendigEntity;
 
 @Entity
 @Table(name = "tbl_card_sides")
 @Data
-public class CardSideEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "pk_id")
-    private long id;
+@EntityListeners(ExternalIdInjector.class)
+public class CardSideEntity extends AuswendigEntity {
 
     @ManyToOne
     @JoinColumn(name = "fk_card_id")

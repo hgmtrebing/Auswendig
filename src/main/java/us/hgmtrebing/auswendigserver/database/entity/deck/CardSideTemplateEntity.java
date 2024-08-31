@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import us.hgmtrebing.auswendigserver.database.ExternalIdInjector;
+import us.hgmtrebing.auswendigserver.database.entity.AuswendigEntity;
 import us.hgmtrebing.auswendigserver.database.entity.SideType;
 
 @Entity
@@ -13,12 +15,8 @@ import us.hgmtrebing.auswendigserver.database.entity.SideType;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CardSideTemplateEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "pk_id")
-    private long id;
+@EntityListeners(ExternalIdInjector.class)
+public class CardSideTemplateEntity extends AuswendigEntity  {
 
     @ManyToOne
     @JoinColumn(name = "fk_deck_id", nullable = false)

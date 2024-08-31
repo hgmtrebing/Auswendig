@@ -2,6 +2,8 @@ package us.hgmtrebing.auswendigserver.database.entity.quiz;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import us.hgmtrebing.auswendigserver.database.ExternalIdInjector;
+import us.hgmtrebing.auswendigserver.database.entity.AuswendigEntity;
 import us.hgmtrebing.auswendigserver.database.entity.UserEntity;
 
 import java.time.LocalDateTime;
@@ -9,12 +11,8 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "tbl_quizzes")
 @Data
-public class QuizEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "pk_id")
-    private long id;
+@EntityListeners(ExternalIdInjector.class)
+public class QuizEntity extends AuswendigEntity {
 
     @ManyToOne
     @JoinColumn(name = "fk_owner_user_id")

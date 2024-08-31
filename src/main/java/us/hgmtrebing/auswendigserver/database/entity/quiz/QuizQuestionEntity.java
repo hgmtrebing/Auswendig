@@ -2,16 +2,14 @@ package us.hgmtrebing.auswendigserver.database.entity.quiz;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import us.hgmtrebing.auswendigserver.database.ExternalIdInjector;
+import us.hgmtrebing.auswendigserver.database.entity.AuswendigEntity;
 
 @Data
 @Entity
 @Table(name = "tbl_quiz_questions")
-public class QuizQuestionEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "pk_id")
-    private long id;
+@EntityListeners(ExternalIdInjector.class)
+public class QuizQuestionEntity extends AuswendigEntity {
 
     @ManyToOne
     @JoinColumn(name = "fk_quiz_id")
