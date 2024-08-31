@@ -1,4 +1,4 @@
-package us.hgmtrebing.auswendigserver.database.entity;
+package us.hgmtrebing.auswendigserver.database;
 
 import jakarta.persistence.PrePersist;
 import lombok.AllArgsConstructor;

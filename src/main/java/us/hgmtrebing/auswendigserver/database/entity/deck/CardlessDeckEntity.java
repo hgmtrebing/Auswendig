@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import us.hgmtrebing.auswendigserver.database.entity.ExternalIdInjector;
+import us.hgmtrebing.auswendigserver.database.ExternalIdInjector;
 import us.hgmtrebing.auswendigserver.database.entity.UserEntity;
 
 import java.time.ZonedDateTime;
