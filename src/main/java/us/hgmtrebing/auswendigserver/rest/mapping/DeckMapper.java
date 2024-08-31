@@ -17,22 +17,28 @@ public class DeckMapper {
         }
 
         CardlessDeckSchema schema = new CardlessDeckSchema();
-        schema.setDeckName(entity.getName());
-        schema.setDeckDescription(entity.getDescription());
-        schema.setOwnerUsername(entity.getOwner().getUsername());
+
+        if (entity.getName() != null) {
+            schema.setDeckName(entity.getName());
+        }
+
+        if (entity.getDescription() != null) {
+            schema.setDeckDescription(entity.getDescription());
+        }
+
+        if (entity.getOwner() != null && entity.getOwner().getUsername() != null) {
+            schema.setOwnerUsername(entity.getOwner().getUsername());
+        }
+
+        if (entity.getExternalId() != null) {
+            schema.setExternalId(entity.getExternalId());
+        }
+
         return schema;
     }
 
     public CardlessDeckEntity convert(CardlessDeckSchema schema, UserEntity owner) {
-        if (schema == null) {
-            return null;
-        }
-
-        CardlessDeckEntity entity = new CardlessDeckEntity();
-        entity.setName(schema.getDeckName());
-        entity.setDescription(schema.getDeckDescription());
-        entity.setOwner(owner);
-        return entity;
+        return update(new CardlessDeckEntity(), schema, owner);
     }
 
     public List<CardlessDeckSchema> convert(List<CardlessDeckEntity> entities) {
@@ -47,6 +53,30 @@ public class DeckMapper {
         }
 
         return schemas;
+    }
+
+    public CardlessDeckEntity update(CardlessDeckEntity entity, CardlessDeckSchema schema, UserEntity owner) {
+        if (schema == null) {
+            return entity;
+        }
+
+        if (schema.getDeckName() != null) {
+            entity.setName(schema.getDeckName());
+        }
+
+        if (schema.getDeckDescription() != null) {
+            entity.setDescription(schema.getDeckDescription());
+        }
+
+        if (owner != null) {
+            entity.setOwner(owner);
+        }
+
+        if (schema.getExternalId() != null) {
+            entity.setExternalId(schema.getExternalId());
+        }
+
+        return entity;
     }
 }
 

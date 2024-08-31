@@ -39,4 +39,8 @@ public class HttpApiResponse<T> extends ResponseEntity<ApiResponse<T>> {
         return of(HttpStatus.OK, ApiStatus.PASSED_COMPLETELY, data, errors);
     }
 
+    public static <T> HttpApiResponse<T> badRequest(String ... errors) {
+        return of(HttpStatus.BAD_REQUEST, ApiStatus.FAILED_COMPLETELY, null, errors);
+    }
+
 }

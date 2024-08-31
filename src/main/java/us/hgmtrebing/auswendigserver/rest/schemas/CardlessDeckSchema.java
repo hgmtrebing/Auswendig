@@ -6,12 +6,17 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Schema(description = "Schema to encapsulate deck data (without cards).")
 public class CardlessDeckSchema {
+
+    @Schema(description = "The System Identifier for this deck.")
+    private UUID externalId;
 
     @Schema(description = "The name of the given deck.", example = "German-to-English Vocabulary")
     private String deckName;

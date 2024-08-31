@@ -31,7 +31,7 @@ public class CardlessDeckEntity {
     @Column(name = "pk_id")
     private long deckId;
 
-    @Column(name="external_id")
+    @Column(name="external_id", nullable = false, unique = true)
     private UUID externalId;
 
     @ManyToOne

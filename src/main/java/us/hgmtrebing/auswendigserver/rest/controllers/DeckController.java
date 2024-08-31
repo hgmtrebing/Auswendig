@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 import us.hgmtrebing.auswendigserver.database.repository.CardlessDeckRepository;
 import us.hgmtrebing.auswendigserver.database.repository.UserRepository;
 import us.hgmtrebing.auswendigserver.rest.api.DeckApi;
+import us.hgmtrebing.auswendigserver.rest.exception.DeckAlreadyExistsException;
+import us.hgmtrebing.auswendigserver.rest.exception.DeckDoesNotExistException;
 import us.hgmtrebing.auswendigserver.rest.mapping.DeckMapper;
 import us.hgmtrebing.auswendigserver.rest.schemas.CardlessDeckSchema;
 import us.hgmtrebing.auswendigserver.rest.schemas.HttpApiResponse;
@@ -29,8 +31,27 @@ public class DeckController implements DeckApi {
 
     @Override
     public HttpApiResponse<CardlessDeckSchema> addCardlessDeck(CardlessDeckSchema schema) {
+        if (cardlessDeckRepository.countByExternalId(schema.getExternalId()) > 0) {
+            throw new DeckAlreadyExistsException(schema.getExternalId());
+        }
+
+        schema.setExternalId(null);
         var owner = userRepository.findByUsername(schema.getOwnerUsername());
         var result = cardlessDeckRepository.saveAndFlush(deckMapper.convert(schema, owner));
         return HttpApiResponse.passedFully(deckMapper.convert(result));
+    }
+
+    @Override
+    public HttpApiResponse<CardlessDeckSchema> updateCardlessDeck(CardlessDeckSchema schema) {
+        var entity = cardlessDeckRepository.findFirstByExternalId(schema.getExternalId());
+
+        if (entity == null) {
+            throw new DeckDoesNotExistException(schema.getExternalId());
+        }
+
+        var owner = userRepository.findByUsername(schema.getOwnerUsername());
+        var result = cardlessDeckRepository.saveAndFlush(deckMapper.update(entity, schema, owner));
+        return HttpApiResponse.passedFully(deckMapper.convert(result));
+
     }
 }
