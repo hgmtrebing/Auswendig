@@ -3,7 +3,6 @@ package us.hgmtrebing.auswendigserver.rest.controllers;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RestController;
-import us.hgmtrebing.auswendigserver.database.entity.deck.CardlessDeckEntity;
 import us.hgmtrebing.auswendigserver.database.repository.CardlessDeckRepository;
 import us.hgmtrebing.auswendigserver.database.repository.UserRepository;
 import us.hgmtrebing.auswendigserver.rest.api.DeckApi;

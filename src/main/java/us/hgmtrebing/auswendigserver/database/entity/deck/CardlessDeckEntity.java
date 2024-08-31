@@ -7,10 +7,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import us.hgmtrebing.auswendigserver.database.entity.ExternalIdInjector;
 import us.hgmtrebing.auswendigserver.database.entity.UserEntity;
 
 import java.time.ZonedDateTime;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(
@@ -21,12 +23,16 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@EntityListeners(ExternalIdInjector.class)
 public class CardlessDeckEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "pk_id")
     private long deckId;
+
+    @Column(name="external_id")
+    private UUID externalId;
 
     @ManyToOne
     @JoinColumn(name = "fk_owner_user_id", nullable = false)
