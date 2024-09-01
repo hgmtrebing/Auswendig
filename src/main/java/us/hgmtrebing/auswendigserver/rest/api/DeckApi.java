@@ -3,9 +3,8 @@ package us.hgmtrebing.auswendigserver.rest.api;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
-import us.hgmtrebing.auswendigserver.rest.schemas.CardlessDeckSchema;
+import us.hgmtrebing.auswendigserver.rest.schemas.deck.CardlessDeckSchema;
 import us.hgmtrebing.auswendigserver.rest.schemas.HttpApiResponse;
-import us.hgmtrebing.auswendigserver.rest.schemas.UserSchema;
 
 import java.util.List;
 

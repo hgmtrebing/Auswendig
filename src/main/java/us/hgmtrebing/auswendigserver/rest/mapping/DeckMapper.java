@@ -3,7 +3,7 @@ package us.hgmtrebing.auswendigserver.rest.mapping;
 import org.springframework.stereotype.Service;
 import us.hgmtrebing.auswendigserver.database.entity.UserEntity;
 import us.hgmtrebing.auswendigserver.database.entity.deck.CardlessDeckEntity;
-import us.hgmtrebing.auswendigserver.rest.schemas.CardlessDeckSchema;
+import us.hgmtrebing.auswendigserver.rest.schemas.deck.CardlessDeckSchema;
 
 import java.util.ArrayList;
 import java.util.List;

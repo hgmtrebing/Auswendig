@@ -1,4 +1,4 @@
-package us.hgmtrebing.auswendigserver.rest.schemas;
+package us.hgmtrebing.auswendigserver.rest.schemas.deck;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;

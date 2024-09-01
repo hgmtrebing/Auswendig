@@ -9,7 +9,7 @@ import us.hgmtrebing.auswendigserver.rest.api.DeckApi;
 import us.hgmtrebing.auswendigserver.rest.exception.DeckAlreadyExistsException;
 import us.hgmtrebing.auswendigserver.rest.exception.DeckDoesNotExistException;
 import us.hgmtrebing.auswendigserver.rest.mapping.DeckMapper;
-import us.hgmtrebing.auswendigserver.rest.schemas.CardlessDeckSchema;
+import us.hgmtrebing.auswendigserver.rest.schemas.deck.CardlessDeckSchema;
 import us.hgmtrebing.auswendigserver.rest.schemas.HttpApiResponse;
 
 import java.util.List;
