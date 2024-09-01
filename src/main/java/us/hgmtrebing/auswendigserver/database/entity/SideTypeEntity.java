@@ -1,5 +1,5 @@
 package us.hgmtrebing.auswendigserver.database.entity;
 
-public enum SideType {
+public enum SideTypeEntity {
     TEXT
 }

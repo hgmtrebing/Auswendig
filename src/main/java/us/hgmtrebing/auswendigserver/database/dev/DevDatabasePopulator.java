@@ -7,14 +7,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import us.hgmtrebing.auswendigserver.database.entity.SideTypeEntity;
 import us.hgmtrebing.auswendigserver.database.entity.deck.CardlessDeckEntity;
-import us.hgmtrebing.auswendigserver.database.entity.deck.CardSideTemplateEntity;
 import us.hgmtrebing.auswendigserver.database.entity.UserEntity;
 import us.hgmtrebing.auswendigserver.database.repository.CardlessDeckRepository;
 import us.hgmtrebing.auswendigserver.database.repository.DeckSideRepository;
 import us.hgmtrebing.auswendigserver.database.repository.UserRepository;
-
-import java.util.List;
 
 @Component
 @Slf4j
@@ -45,9 +43,9 @@ public class DevDatabasePopulator implements CommandLineRunner {
         UserEntity harry = userRepository.findByUsername("hgmtrebing");
         UserEntity anjanette = userRepository.findByUsername("aktrebing");
 
-        addDeck("German Example Sentences", harry, List.of("German", "English"));
-        addDeck("Spanish Example Sentences", harry, List.of("Spanish", "English", "Notes"));
-        addDeck("Japanese Cooking Vocabulary", anjanette, List.of("Japanese", "English", "Photo", "Audio", "Notes"));
+        addDeck("German Example Sentences", harry, "German", SideTypeEntity.TEXT, "English", SideTypeEntity.TEXT);
+        addDeck("Spanish Example Sentences", harry, "Spanish", SideTypeEntity.TEXT, "English", SideTypeEntity.TEXT);
+        addDeck("Japanese Cooking Vocabulary", anjanette, "Japanese", SideTypeEntity.TEXT, "English", SideTypeEntity.TEXT);
     }
 
     private void addUser(String firstName, String lastName, String userName) {
@@ -59,19 +57,16 @@ public class DevDatabasePopulator implements CommandLineRunner {
         );
     }
 
-    private void addDeck(String deckName, UserEntity owner, List<String> sides) {
+    private void addDeck(String deckName, UserEntity owner, String side01Name, SideTypeEntity side01Type, String side02Name, SideTypeEntity side02Type) {
         CardlessDeckEntity deck = cardlessDeckRepository.saveAndFlush(CardlessDeckEntity.builder()
                 .name(deckName)
                 .owner(owner)
+                        .side01Name(side01Name)
+                        .side01Type(side01Type)
+                        .side02Name(side02Name)
+                        .side02Type(side02Type)
                 .build()
         );
 
-        for (String side : sides) {
-            deckSideRepository.saveAndFlush(CardSideTemplateEntity.builder()
-                    .name(side)
-                    .deck(deck)
-                    .build()
-            );
-        }
     }
 }

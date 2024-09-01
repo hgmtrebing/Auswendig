@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import us.hgmtrebing.auswendigserver.database.ExternalIdInjector;
 import us.hgmtrebing.auswendigserver.database.entity.AuswendigEntity;
-import us.hgmtrebing.auswendigserver.database.entity.SideType;
+import us.hgmtrebing.auswendigserver.database.entity.SideTypeEntity;
 
 @Entity
 @Table(name = "tbl_card_side_template")
@@ -26,5 +26,5 @@ public class CardSideTemplateEntity extends AuswendigEntity  {
     private String name;
 
     @Column(name = "type")
-    private SideType sideType;
+    private SideTypeEntity sideType;
 }
