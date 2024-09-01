@@ -34,9 +34,6 @@ public class CardlessDeckEntity extends AuswendigEntity  {
     @Column(name = "description", nullable = true)
     private String description;
 
-    @OneToMany(mappedBy = "id")
-    private List<CardSideTemplateEntity> cardTemplate;
-
     @Column(name = "global_hint", nullable = true, unique = false)
     private String globalHint;
 
