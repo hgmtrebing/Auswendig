@@ -1,5 +1,23 @@
 # Planning
 
+## 2024-09-05 : 12:48:22
+
+Additional Card Refactor:
+    - Question
+    - Answer
+    - Hint
+    - Note
+    - Last Success
+    - Last Failure
+    - Success Count
+    - Failure Count
+    - Tags
+
+- I don't think I even need dual-sided cards. Single cards are sufficient.
+- This does mean that I need very powerful importing ability, and maybe a configurable datasource ability.
+
+
+
 ## 2024-09-01 : 11:35:01
 
 Major refactor:
