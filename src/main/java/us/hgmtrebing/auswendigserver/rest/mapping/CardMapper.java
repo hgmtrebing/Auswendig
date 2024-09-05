@@ -40,65 +40,36 @@ public class CardMapper {
         }
 
 
-        // Set Side 01 Fields
-
-        if (source.getSide01Value() != null) {
-            target.setSide01Value(source.getSide01Value());
+        if (source.getQuestion() != null) {
+            target.setQuestion(source.getQuestion());
         }
 
-        if (source.getSide01Note() != null) {
-            target.setSide01Note(source.getSide01Note());
+        if (source.getAnswer() != null) {
+            target.setAnswer(source.getAnswer());
         }
 
-        if (source.getSide01Hint() != null) {
-            target.setSide01Hint(source.getSide01Hint());
+        if (source.getNote() != null) {
+            target.setNote(source.getNote());
         }
 
-        if (source.getSide01SuccessCount() != null) {
-            target.setSide01SuccessCount(source.getSide01SuccessCount());
+        if (source.getHint() != null) {
+            target.setHint(source.getHint());
         }
 
-        if (source.getSide01FailureCount() != null) {
-            target.setSide01FailureCount(source.getSide01FailureCount());
+        if (source.getSuccessCount() != null) {
+            target.setSuccessCount(source.getSuccessCount());
         }
 
-        if (source.getSide01LastSuccess() != null) {
-            target.setSide01LastSuccess(source.getSide01LastSuccess());
+        if (source.getFailureCount() != null) {
+            target.setFailureCount(source.getFailureCount());
         }
 
-        if (source.getSide01LastFailure() != null) {
-            target.setSide01LastFailure(source.getSide01LastFailure());
+        if (source.getLastSuccess() != null) {
+            target.setLastSuccess(source.getLastSuccess());
         }
 
-
-        // Set Side 02 Fields
-
-        if (source.getSide02Value() != null) {
-            target.setSide02Value(source.getSide02Value());
-        }
-
-        if (source.getSide02Note() != null) {
-            target.setSide02Note(source.getSide02Note());
-        }
-
-        if (source.getSide02Hint() != null) {
-            target.setSide02Hint(source.getSide02Hint());
-        }
-
-        if (source.getSide02SuccessCount() != null) {
-            target.setSide02SuccessCount(source.getSide02SuccessCount());
-        }
-
-        if (source.getSide02FailureCount() != null) {
-            target.setSide02FailureCount(source.getSide02FailureCount());
-        }
-
-        if (source.getSide02LastSuccess() != null) {
-            target.setSide02LastSuccess(source.getSide02LastSuccess());
-        }
-
-        if (source.getSide02LastFailure() != null) {
-            target.setSide02LastFailure(source.getSide02LastFailure());
+        if (source.getLastFailure() != null) {
+            target.setLastFailure(source.getLastFailure());
         }
 
         return target;
@@ -117,67 +88,38 @@ public class CardMapper {
             target.setDeck(deck);
         }
 
-
-        // Set Side 01 Fields
-
-        if (source.getSide01Value() != null) {
-            target.setSide01Value(source.getSide01Value());
+        if (source.getQuestion() != null) {
+            target.setQuestion(source.getQuestion());
         }
 
-        if (source.getSide01Note() != null) {
-            target.setSide01Note(source.getSide01Note());
+        if (source.getAnswer() != null) {
+            target.setAnswer(source.getAnswer());
         }
 
-        if (source.getSide01Hint() != null) {
-            target.setSide01Hint(source.getSide01Hint());
+        if (source.getNote() != null) {
+            target.setNote(source.getNote());
         }
 
-        if (source.getSide01SuccessCount() != null) {
-            target.setSide01SuccessCount(source.getSide01SuccessCount());
+        if (source.getHint() != null) {
+            target.setHint(source.getHint());
         }
 
-        if (source.getSide01FailureCount() != null) {
-            target.setSide01FailureCount(source.getSide01FailureCount());
+        if (source.getSuccessCount() != null) {
+            target.setSuccessCount(source.getSuccessCount());
         }
 
-        if (source.getSide01LastSuccess() != null) {
-            target.setSide01LastSuccess(source.getSide01LastSuccess());
+        if (source.getFailureCount() != null) {
+            target.setFailureCount(source.getFailureCount());
         }
 
-        if (source.getSide01LastFailure() != null) {
-            target.setSide01LastFailure(source.getSide01LastFailure());
+        if (source.getLastSuccess() != null) {
+            target.setLastSuccess(source.getLastSuccess());
         }
 
-
-        // Set Side 02 Fields
-
-        if (source.getSide02Value() != null) {
-            target.setSide02Value(source.getSide02Value());
+        if (source.getLastFailure() != null) {
+            target.setLastFailure(source.getLastFailure());
         }
 
-        if (source.getSide02Note() != null) {
-            target.setSide02Note(source.getSide02Note());
-        }
-
-        if (source.getSide02Hint() != null) {
-            target.setSide02Hint(source.getSide02Hint());
-        }
-
-        if (source.getSide02SuccessCount() != null) {
-            target.setSide02SuccessCount(source.getSide02SuccessCount());
-        }
-
-        if (source.getSide02FailureCount() != null) {
-            target.setSide02FailureCount(source.getSide02FailureCount());
-        }
-
-        if (source.getSide02LastSuccess() != null) {
-            target.setSide02LastSuccess(source.getSide02LastSuccess());
-        }
-
-        if (source.getSide02LastFailure() != null) {
-            target.setSide02LastFailure(source.getSide02LastFailure());
-        }
 
         return target;
     }

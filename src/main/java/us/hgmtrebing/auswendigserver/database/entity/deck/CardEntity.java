@@ -17,51 +17,28 @@ public class CardEntity extends AuswendigEntity {
     @JoinColumn(name = "fk_deck_id")
     private CardlessDeckEntity deck;
 
+    @Column(name = "question")
+    private String question;
 
-    // Side 01 Fields
+    @Column(name = "answer")
+    private String answer;
 
-    @Column(name = "side_01_value")
-    private String side01Value;
+    @Column(name = "note")
+    private String note;
 
-    @Column(name = "side_01_note")
-    private String side01Note;
+    @Column(name = "hint")
+    private String hint;
 
-    @Column(name = "side_01_hint")
-    private String side01Hint;
+    @Column(name = "success_count")
+    private Long successCount;
 
-    @Column(name = "side_01_success_count")
-    private Long side01SuccessCount;
+    @Column(name = "failure_count")
+    private Long failureCount;
 
-    @Column(name = "side_01_failure_count")
-    private Long side01FailureCount;
+    @Column(name = "last_success")
+    private LocalDateTime lastSuccess;
 
-    @Column(name = "side_01_last_success")
-    private LocalDateTime side01LastSuccess;
+    @Column(name = "last_failure")
+    private LocalDateTime lastFailure;
 
-    @Column(name = "side_01_last_failure")
-    private LocalDateTime side01LastFailure;
-
-
-    // Side 02 Fields
-
-    @Column(name = "side_02_value")
-    private String side02Value;
-
-    @Column(name = "side_02_note")
-    private String side02Note;
-
-    @Column(name = "side_02_hint")
-    private String side02Hint;
-
-    @Column(name = "side_02_success_count")
-    private Long side02SuccessCount;
-
-    @Column(name = "side_02_failure_count")
-    private Long side02FailureCount;
-
-    @Column(name = "side_02_last_success")
-    private LocalDateTime side02LastSuccess;
-
-    @Column(name = "side_02_last_failure")
-    private LocalDateTime side02LastFailure;
 }

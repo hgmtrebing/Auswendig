@@ -22,50 +22,27 @@ public class CardSchema {
     @Schema(description = "The identifier for the deck that owns this card.")
     private UUID deckExternalId;
 
-    // Side 01 Fields
+    @Schema(description = "The question for this card.")
+    private String question;
 
-    @Schema(description = "The value of Side 01.")
-    private String side01Value;
+    @Schema(description = "The answer for this card.")
+    private String answer;
 
-    @Schema(description = "The note on Side 01.")
-    private String side01Note;
+    @Schema(description = "The note for this card.")
+    private String note;
 
-    @Schema(description = "The hint for Side 01.")
-    private String side01Hint;
+    @Schema(description = "The hint for this card.")
+    private String hint;
 
-    @Schema(description = "The success count for Side 01.")
-    private Long side01SuccessCount;
+    @Schema(description = "The success count for this code.")
+    private Long successCount;
 
-    @Schema(description = "The failure count for Side 01.")
-    private Long side01FailureCount;
+    @Schema(description = "The failure count for this card.")
+    private Long failureCount;
 
-    @Schema(description = "The last success date for Side 01.")
-    private LocalDateTime side01LastSuccess;
+    @Schema(description = "The last success date for this card.")
+    private LocalDateTime lastSuccess;
 
-    @Schema(description = "The last failure date for Side 01.")
-    private LocalDateTime side01LastFailure;
-
-
-    // Side 02 Fields
-
-    @Schema(description = "The value of Side 01.")
-    private String side02Value;
-
-    @Schema(description = "The note on Side 01.")
-    private String side02Note;
-
-    @Schema(description = "The hint for Side 01.")
-    private String side02Hint;
-
-    @Schema(description = "The success count for Side 01.")
-    private Long side02SuccessCount;
-
-    @Schema(description = "The failure count for Side 01.")
-    private Long side02FailureCount;
-
-    @Schema(description = "The last success date for Side 01.")
-    private LocalDateTime side02LastSuccess;
-
-    @Schema(description = "The last failure date for Side 01.")
-    private LocalDateTime side02LastFailure;
+    @Schema(description = "The last failure date for this card.")
+    private LocalDateTime lastFailure;
 }
