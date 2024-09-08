@@ -43,9 +43,10 @@ public class DevDatabasePopulator implements CommandLineRunner {
         UserEntity harry = userRepository.findByUsername("hgmtrebing");
         UserEntity anjanette = userRepository.findByUsername("aktrebing");
 
-        addDeck("German Example Sentences", harry, "German", SideTypeEntity.TEXT, "English", SideTypeEntity.TEXT);
-        addDeck("Spanish Example Sentences", harry, "Spanish", SideTypeEntity.TEXT, "English", SideTypeEntity.TEXT);
-        addDeck("Japanese Cooking Vocabulary", anjanette, "Japanese", SideTypeEntity.TEXT, "English", SideTypeEntity.TEXT);
+        addDeck("German->English Sentences", "German to English Example Sentences", harry, "English", "German", "Note", "Hint" );
+        addDeck("English->Spanish Sentences", "Spanish to English Example Sentences", harry, "English", "Spanish", "Note", "Hint" );
+        addDeck("English->Mandarin Sentences", "Mandarin to English Example Sentences", harry, "English", "Mandarin", "Note", "Hint" );
+        addDeck("Japanese Cooking Vocabulary", "Cooking Vocabulary for Japanese", harry, "German", "Japanese", "Note", "Hint" );
     }
 
     private void addUser(String firstName, String lastName, String userName) {
@@ -57,16 +58,16 @@ public class DevDatabasePopulator implements CommandLineRunner {
         );
     }
 
-    private void addDeck(String deckName, UserEntity owner, String side01Name, SideTypeEntity side01Type, String side02Name, SideTypeEntity side02Type) {
+    private void addDeck(String deckName, String description, UserEntity owner, String questionSideName, String answerSideName, String globalNote, String globalHint) {
         CardlessDeckEntity deck = cardlessDeckRepository.saveAndFlush(CardlessDeckEntity.builder()
                 .name(deckName)
+                .description(description)
                 .owner(owner)
-                        .side01Name(side01Name)
-                        .side01Type(side01Type)
-                        .side02Name(side02Name)
-                        .side02Type(side02Type)
+                .questionSideName(questionSideName)
+                .answerSideName(answerSideName)
+                .globalNote(globalNote)
+                .globalHint(globalHint)
                 .build()
         );
-
     }
 }

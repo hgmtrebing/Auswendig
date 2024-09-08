@@ -42,85 +42,65 @@ public class DeckMapper {
         }
     }
 
-    public CardlessDeckSchema convert(CardlessDeckEntity entity) {
-        if (entity == null) {
+    public CardlessDeckSchema convert(CardlessDeckEntity source) {
+        if (source == null) {
             return null;
         }
 
-        CardlessDeckSchema schema = new CardlessDeckSchema();
+        CardlessDeckSchema target = new CardlessDeckSchema();
 
-        if (entity.getName() != null) {
-            schema.setDeckName(entity.getName());
+        if (source.getName() != null) {
+            target.setDeckName(source.getName());
         }
 
-        if (entity.getDescription() != null) {
-            schema.setDeckDescription(entity.getDescription());
+        if (source.getDescription() != null) {
+            target.setDeckDescription(source.getDescription());
         }
 
-        if (entity.getOwner() != null && entity.getOwner().getUsername() != null) {
-            schema.setOwnerUsername(entity.getOwner().getUsername());
+        if (source.getOwner() != null && source.getOwner().getUsername() != null) {
+            target.setOwnerUsername(source.getOwner().getUsername());
         }
 
-        if (entity.getExternalId() != null) {
-            schema.setExternalId(entity.getExternalId());
+        if (source.getExternalId() != null) {
+            target.setExternalId(source.getExternalId());
         }
 
-        if (entity.getGlobalNote() != null) {
-            schema.setGlobalNote(entity.getGlobalNote());
+        if (source.getGlobalNote() != null) {
+            target.setGlobalNote(source.getGlobalNote());
         }
 
-        if (entity.getGlobalHint() != null) {
-            schema.setGlobalHint(entity.getGlobalHint());
-        }
-
-
-        // Side 01 Template Fieelds
-
-        if (entity.getSide01Name() != null) {
-            schema.setSide01Name(entity.getSide01Name());
-        }
-
-        if (entity.getSide01Description() != null) {
-            schema.setSide01Description(entity.getSide01Description());
-        }
-
-        if (entity.getSide01Type() != null) {
-            schema.setSide01Type(convert(entity.getSide01Type()));
-        }
-
-        if (entity.getSide01GlobalHint() != null) {
-            schema.setSide01GlobalHint(entity.getSide01GlobalHint());
-        }
-
-        if (entity.getSide01GlobalNote() != null) {
-            schema.setSide01GlobalNote(entity.getSide01GlobalNote());
+        if (source.getGlobalHint() != null) {
+            target.setGlobalHint(source.getGlobalHint());
         }
 
 
-        // Side 02 Template Fieelds
-
-        if (entity.getSide02Name() != null) {
-            schema.setSide02Name(entity.getSide02Name());
+        if (source.getQuestionSideName() != null) {
+            target.setQuestionSideName(source.getQuestionSideName());
         }
 
-        if (entity.getSide02Description() != null) {
-            schema.setSide02Description(entity.getSide02Description());
+        if (source.getAnswerSideName() != null) {
+            target.setAnswerSideName(source.getAnswerSideName());
         }
 
-        if (entity.getSide02Type() != null) {
-            schema.setSide02Type(convert(entity.getSide02Type()));
+        if (source.getSuccessCount() != null) {
+            target.setSuccessCount(source.getSuccessCount());
         }
 
-        if (entity.getSide02GlobalHint() != null) {
-            schema.setSide02GlobalHint(entity.getSide02GlobalHint());
+        if (source.getFailureCount() != null) {
+            target.setFailureCount(source.getFailureCount());
         }
 
-        if (entity.getSide02GlobalNote() != null) {
-            schema.setSide02GlobalNote(entity.getSide02GlobalNote());
+        if (source.getLastSuccess() != null) {
+            target.setLastSuccess(source.getLastSuccess());
+        }
+
+        if (source.getLastFailure() != null) {
+            target.setLastFailure(source.getLastFailure());
         }
 
 
-        return schema;
+
+        return target;
     }
 
     public CardlessDeckEntity convert(CardlessDeckSchema schema, UserEntity owner) {
@@ -141,85 +121,62 @@ public class DeckMapper {
         return schemas;
     }
 
-    public CardlessDeckEntity update(CardlessDeckEntity entity, CardlessDeckSchema schema, UserEntity owner) {
-        if (schema == null) {
-            return entity;
+    public CardlessDeckEntity update(CardlessDeckEntity target, CardlessDeckSchema source, UserEntity owner) {
+        if (source == null) {
+            return target;
         }
 
-        if (schema.getDeckName() != null) {
-            entity.setName(schema.getDeckName());
+        if (source.getDeckName() != null) {
+            target.setName(source.getDeckName());
         }
 
-        if (schema.getDeckDescription() != null) {
-            entity.setDescription(schema.getDeckDescription());
+        if (source.getDeckDescription() != null) {
+            target.setDescription(source.getDeckDescription());
         }
 
         if (owner != null) {
-            entity.setOwner(owner);
+            target.setOwner(owner);
         }
 
-        if (schema.getExternalId() != null) {
-            entity.setExternalId(schema.getExternalId());
+        if (source.getExternalId() != null) {
+            target.setExternalId(source.getExternalId());
         }
 
-
-        if (schema.getGlobalNote() != null) {
-            entity.setGlobalNote(schema.getGlobalNote());
+        if (source.getGlobalNote() != null) {
+            target.setGlobalNote(source.getGlobalNote());
         }
 
-        if (schema.getGlobalHint() != null) {
-            entity.setGlobalHint(schema.getGlobalHint());
+        if (source.getGlobalHint() != null) {
+            target.setGlobalHint(source.getGlobalHint());
         }
 
-
-        // Side 01 Template Fieelds
-
-        if (schema.getSide01Name() != null) {
-            entity.setSide01Name(schema.getSide01Name());
+        if (source.getQuestionSideName() != null) {
+            target.setQuestionSideName(source.getQuestionSideName());
         }
 
-        if (schema.getSide01Description() != null) {
-            entity.setSide01Description(schema.getSide01Description());
+        if (source.getAnswerSideName() != null) {
+            target.setAnswerSideName(source.getAnswerSideName());
         }
 
-        if (schema.getSide01Type() != null) {
-            entity.setSide01Type(convert(schema.getSide01Type()));
+        if (source.getSuccessCount() != null) {
+            target.setSuccessCount(source.getSuccessCount());
         }
 
-        if (schema.getSide01GlobalHint() != null) {
-            entity.setSide01GlobalHint(schema.getSide01GlobalHint());
+        if (source.getFailureCount() != null) {
+            target.setFailureCount(source.getFailureCount());
         }
 
-        if (schema.getSide01GlobalNote() != null) {
-            entity.setSide01GlobalNote(schema.getSide01GlobalNote());
+        if (source.getLastSuccess() != null) {
+            target.setLastSuccess(source.getLastSuccess());
         }
 
-
-        // Side 02 Template Fieelds
-
-        if (schema.getSide02Name() != null) {
-            entity.setSide02Name(schema.getSide02Name());
-        }
-
-        if (schema.getSide02Description() != null) {
-            entity.setSide02Description(schema.getSide02Description());
-        }
-
-        if (schema.getSide02Type() != null) {
-            entity.setSide02Type(convert(schema.getSide02Type()));
-        }
-
-        if (schema.getSide02GlobalHint() != null) {
-            entity.setSide02GlobalHint(schema.getSide02GlobalHint());
-        }
-
-        if (schema.getSide02GlobalNote() != null) {
-            entity.setSide02GlobalNote(schema.getSide02GlobalNote());
+        if (source.getLastFailure() != null) {
+            target.setLastFailure(source.getLastFailure());
         }
 
 
 
-        return entity;
+        return target;
     }
 }
 

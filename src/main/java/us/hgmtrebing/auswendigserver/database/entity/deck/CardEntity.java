@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import us.hgmtrebing.auswendigserver.database.ExternalIdInjector;
 import us.hgmtrebing.auswendigserver.database.entity.AuswendigEntity;
+import us.hgmtrebing.auswendigserver.database.entity.QuizzedAuswendigEntity;
 
 import java.time.LocalDateTime;
 
@@ -11,7 +12,7 @@ import java.time.LocalDateTime;
 @Table(name = "tbl_cards")
 @Data
 @EntityListeners(ExternalIdInjector.class)
-public class CardEntity extends AuswendigEntity {
+public class CardEntity extends QuizzedAuswendigEntity {
 
     @ManyToOne
     @JoinColumn(name = "fk_deck_id")
@@ -29,16 +30,5 @@ public class CardEntity extends AuswendigEntity {
     @Column(name = "hint")
     private String hint;
 
-    @Column(name = "success_count")
-    private Long successCount;
-
-    @Column(name = "failure_count")
-    private Long failureCount;
-
-    @Column(name = "last_success")
-    private LocalDateTime lastSuccess;
-
-    @Column(name = "last_failure")
-    private LocalDateTime lastFailure;
 
 }
