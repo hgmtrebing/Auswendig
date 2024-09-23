@@ -1,5 +1,13 @@
 # Planning
 
+## 2024-09-08 : 09:47:00
+
+I've reached a point where I need to consider user authentication.
+
+- Create a GitHub repository to house AuswendigUi
+- Create a test page for AuswendigUI
+- Create a Login Modal for AuswendigUI
+
 ## 2024-09-05 : 12:48:22
 
 Additional Card Refactor:
